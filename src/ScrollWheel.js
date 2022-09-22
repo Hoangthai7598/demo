@@ -2,11 +2,7 @@ import * as React from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import Animated, {
     Extrapolate,
-    interpolate,
-    interpolateColor,
-    useAnimatedStyle,
-    useSharedValue,
-    withTiming,
+    interpolate, useAnimatedStyle
 } from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
 import { COLORS } from './colors';
@@ -16,37 +12,7 @@ function ScrollWheel({ listYear, listDay, listMonth }) {
 
     const ITEM_HEIGHT = 20;
 
-    const animationStyle = (value) => {
-        'worklet';
-        const scale = interpolate(
-            value,
-            [-1, 0, 1, 1],
-            [1, 1, 1, 0]
-        );
-        // const scale = interpolate(
-        //     value,
-        //     [0.5, 1, 0.5],
-        //     [-ITEM_HEIGHT, 0, ITEM_HEIGHT],
-        //     Extrapolate.CLAMP
-        // );
-        const opacity = interpolate(
-            value,
-            [-2, -1, 0, 1, 2],
-            [1.7, 1.2, 1, 1.2, 1.7],
-            Extrapolate.CLAMP
-        );
-        // const opacity = interpolate(
-        //     value,
-        //     [0.5, 1, 0.5],
-        //     [-ITEM_HEIGHT/2, 0, ITEM_HEIGHT/2]
-        // );
-        return {
-            transform: [{ scale }],
-        };
-    }
-
     const [indexDate, setIndexDate] = React.useState(0);
-
 
     return (
         <View style={{ backgroundColor: '#fff', marginHorizontal: 16, borderRadius: 10 }}>
