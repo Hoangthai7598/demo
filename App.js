@@ -1,10 +1,13 @@
 import * as React from 'react';
 import AppContainer from './src/AppContainer';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 const App = () => {
   return (
-    <AppContainer />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <AppContainer />
+    </GestureHandlerRootView>
   );
 };
 

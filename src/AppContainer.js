@@ -6,9 +6,11 @@ import {
     Button,
     View,
     Text,
+    TouchableOpacity,
 } from 'react-native';
 import moment from 'moment';
 import ScrollWheel from './ScrollWheel';
+import { COLORS } from './colors';
 
 const listMonth = Array.apply(0, Array(12)).map(function (_, i) { return moment().month(i).format('MM') })
 
@@ -55,12 +57,15 @@ const AppContainer = () => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Button title='Close' onPress={() => { setModalVisible(false) }} />
                         <ScrollWheel
                             listYear={YEARS()}
                             listDay={getDaysArray(newDate.getFullYear(), newDate.getMonth())}
                             listMonth={listMonth}
                         />
+                        <TouchableOpacity style={styles.button}
+                            onPress={() => { setModalVisible(false) }} >
+                            <Text style={styles.buttonText}>Huỷ</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </Modal>
@@ -75,24 +80,13 @@ const styles = StyleSheet.create({
     },
     centeredView: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        backgroundColor: '#75767b',
+        justifyContent: 'flex-end'
     },
     modalView: {
-        margin: 20,
-        backgroundColor: "white",
         borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
+        marginHorizontal: 30,
     },
     textStyle: {
         color: "white",
@@ -102,6 +96,20 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center"
+    },
+    button: {
+        backgroundColor: COLORS.purple,
+        padding: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 22,
+        marginHorizontal: 16,
+        marginTop: 40,
+        borderRadius: 10
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 15
     }
 });
 
