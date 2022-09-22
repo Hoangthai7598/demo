@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppContainer from './src/AppContainer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
